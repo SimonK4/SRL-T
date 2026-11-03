@@ -1230,20 +1230,20 @@ mithril pickaxe
 noted mithril pickaxe
 rune pickaxe
 noted rune pickaxe
-bronze sword
-noted bronze sword
-iron sword
-noted iron sword
-steel sword
-noted steel sword
-black sword
-noted black sword
-mithril sword
-noted mithril sword
-adamant sword
-noted adamant sword
-rune sword
-noted rune sword
+bronze shortsword
+noted bronze shortsword
+iron shortsword
+noted iron shortsword
+steel shortsword
+noted steel shortsword
+black shortsword
+noted black shortsword
+mithril shortsword
+noted mithril shortsword
+adamant shortsword
+noted adamant shortsword
+rune shortsword
+noted rune shortsword
 bronze longsword
 noted bronze longsword
 iron longsword
@@ -5868,8 +5868,8 @@ white mace
 noted white mace
 white magic staff
 noted white magic staff
-white sword
-noted white sword
+white shortsword
+noted white shortsword
 white longsword
 noted white longsword
 white 2h sword
@@ -6718,7 +6718,7 @@ gadderhammer
 noted gadderhammer
 boxing gloves
 boxing gloves
-wooden sword
+wooden shortsword
 wooden shield
 treasure stone
 prize key
@@ -8485,9 +8485,9 @@ blank fire rune
 fire rune
 noted torch
 stick
-training sword
+training shortsword
 training shield
-training bow
+training shortbow
 training arrows
 training arrows
 training arrows
@@ -12285,8 +12285,8 @@ elder maul
 noted elder maul
 kodai wand
 noted kodai wand
-dragon sword
-noted dragon sword
+dragon shortsword
+noted dragon shortsword
 dragon hunter crossbow
 noted dragon hunter crossbow
 dinh's bulwark
@@ -16097,7 +16097,7 @@ dragon dagger (p)(cr)
 dragon dagger (p+)(cr)
 dragon dagger (p++)(cr)
 dragon mace (cr)
-dragon sword (cr)
+dragon shortsword (cr)
 dragon scimitar (cr)
 dragon longsword (cr)
 dragon warhammer (cr)
@@ -20242,6 +20242,22 @@ zorya's tome (uncharged)
 noted zorya's tome (uncharged)
 alliance log
 leftovers
+candy onion
+sugar
+molten sugar
+old onion
+vampyre monocle
+vampyre costume top
+vampyre costume bottom
+vampyre costume cape
+antique lamp
+mudfoot
+letter
+newspaper cutting
+human head
+certificate
+amulet of sight
+noted amulet of sight
 marrentill seed
 marrentill seed
 marrentill seed
