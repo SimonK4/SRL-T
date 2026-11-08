@@ -112,7 +112,7 @@ Each of this messages is stored in **LOGIN_MESSAGES** in the same order.
   LOGIN_MESSAGE_WORLD_FULL = 'This world is full';
   LOGIN_MESSAGE_ACCOUNT_DISABLED = 'Your account has been disabled';
   LOGIN_MESSAGE_ACCOUNT_RULE_BREAKER = 'Your account has been involved';
-  LOGIN_MESSAGE_MEMBERS = 'You need a members account';
+  LOGIN_MESSAGE_MEMBERS = "You need a members' account to use this world.";
   LOGIN_MESSAGE_IN_MEMBERS_AREA = 'You are standing in a members-only area';
   LOGIN_MESSAGE_AUTHENTICATOR = 'Authenticator';
   LOGIN_MESSAGE_UPDATED =  'RuneScape has been updated! Please restart the game to retry';
@@ -165,11 +165,13 @@ Each of this messages is stored in **LOGIN_MESSAGES** in the same order.
   LOGIN_DIALOG_TRY_AGAIN = 'Try again';
   LOGIN_DIALOG_EXISTING_USER = 'Existing User';
   LOGIN_DIALOG_CONTINUE = 'Continue';
+  LOGIN_DIALOG_MOVE = 'Login';
 
   LOGIN_DIALOGS = [
     LOGIN_DIALOG_OK,
     LOGIN_DIALOG_TRY_AGAIN,
-    LOGIN_DIALOG_EXISTING_USER
+    LOGIN_DIALOG_EXISTING_USER,
+    LOGIN_DIALOG_MOVE
   ];
 
   LOGIN_DIALOGS_DANGEROUS = [
@@ -530,6 +532,8 @@ WriteLn Login.HandleMessage(Login.GetLoginMessage());
 ```
 *)
 function TRSLogin.HandleMessage(Message: String): Boolean;
+var
+  box:TBox;
 begin
   Self.DebugLn('Handling login message: ' + Message);
 
@@ -574,7 +578,6 @@ begin
 
         Result := True;
       end;
-
     // No handler
     else
       Self.Fatal('Unknown login message');
@@ -610,7 +613,8 @@ begin
   while not RSClient.IsLoggedIn() do
   begin
     if Self.ClickText('CLICK HERE TO PLAY') then
-      if RSClient.IsLoggedIn(5000) then exit(True);
+      if RSClient.IsLoggedIn(5000) then
+        exit(True);
 
     current := GetTickCount();
     if (current > timeout) then
