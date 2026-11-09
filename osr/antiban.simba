@@ -726,8 +726,11 @@ begin
   end;
 end;
 
-procedure TAntiban.RandomKeyboard();
+procedure TAntiban.RandomKeyboard(); //NO WHAT IS THIS
 begin
+  wait(random(100,500));
+  exit;
+
   case Random(100) of
     0..74:
       case Random(3) of
