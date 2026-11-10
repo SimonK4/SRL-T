@@ -128,6 +128,7 @@ Each of this messages is stored in **LOGIN_MESSAGES** in the same order.
   LOGIN_MESSAGE_NOT_LOGGED_OUT_ALT = 'Your account has not logged out from its last session';
   LOGIN_MESSAGE_BEING_UPDATED = 'RuneScape is being updated';
   LOGIN_MESSAGE_RELOAD_PAGE = 'Please reload this page';
+  LOGIN_MESSAGE_HARDCORE  = 'Only Hardcore players may log into Hardcore worlds.';
 
   LOGIN_MESSAGES = [
     LOGIN_MESSAGE_CONNECTING,
@@ -158,7 +159,8 @@ Each of this messages is stored in **LOGIN_MESSAGES** in the same order.
     LOGIN_MESSAGE_UNEXPECTED_RESPONSE,
     LOGIN_MESSAGE_NOT_LOGGED_OUT_ALT,
     LOGIN_MESSAGE_BEING_UPDATED,
-    LOGIN_MESSAGE_RELOAD_PAGE
+    LOGIN_MESSAGE_RELOAD_PAGE,
+    LOGIN_MESSAGE_HARDCORE
   ];
 
   LOGIN_DIALOG_OK = 'Ok';
@@ -532,8 +534,6 @@ WriteLn Login.HandleMessage(Login.GetLoginMessage());
 ```
 *)
 function TRSLogin.HandleMessage(Message: String): Boolean;
-var
-  box:TBox;
 begin
   Self.DebugLn('Handling login message: ' + Message);
 
@@ -549,7 +549,8 @@ begin
     LOGIN_MESSAGE_TOO_MANY_INCORRECT,
     LOGIN_MESSAGE_BEING_UPDATED,
     LOGIN_MESSAGE_RELOAD_PAGE,
-    LOGIN_MESSAGE_UPDATED:
+    LOGIN_MESSAGE_UPDATED,
+    LOGIN_MESSAGE_HARDCORE:
       Result := False;
 
     // Retry
