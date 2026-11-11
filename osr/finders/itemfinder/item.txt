@@ -8769,8 +8769,8 @@ hunter potion(1)
 noted hunter potion(1)
 bird snare
 box trap
-butterfly net
-noted butterfly net
+insect net
+noted insect net
 butterfly jar
 noted butterfly jar
 black warlock
@@ -9640,7 +9640,7 @@ noted ninja impling jar
 dragon impling jar
 noted dragon impling jar
 jar generator
-magic butterfly net
+magic insect net
 impling jar
 noted impling jar
 imp repellent
@@ -20258,6 +20258,29 @@ human head
 certificate
 amulet of sight
 noted amulet of sight
+painted shortsword
+noted painted shortsword
+painted kiteshield
+noted painted kiteshield
+painted shortbow
+noted painted shortbow
+bee box
+bee hunter's hat
+wasp sting
+killer wasp sting
+brown feather
+black feather
+wasp dart
+killer wasp dart
+bea's supplies
+fresh leaves
+dew-covered branch
+restorative dew
+strong sticks
+pink snelm
+noted pink snelm
+honey buzzard
+black honey buzzard
 marrentill seed
 marrentill seed
 marrentill seed
