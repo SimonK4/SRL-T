@@ -128,7 +128,8 @@ Each of this messages is stored in **LOGIN_MESSAGES** in the same order.
   LOGIN_MESSAGE_NOT_LOGGED_OUT_ALT = 'Your account has not logged out from its last session';
   LOGIN_MESSAGE_BEING_UPDATED = 'RuneScape is being updated';
   LOGIN_MESSAGE_RELOAD_PAGE = 'Please reload this page';
-  LOGIN_MESSAGE_HARDCORE  = 'Only Hardcore players may log into Hardcore worlds.';
+  LOGIN_MESSAGE_HARDCORE  = 'Only Hardcore players';
+  LOGIN_MESSAGE_MEMBERS_AREA = 'To access this free';
 
   LOGIN_MESSAGES = [
     LOGIN_MESSAGE_CONNECTING,
@@ -160,7 +161,8 @@ Each of this messages is stored in **LOGIN_MESSAGES** in the same order.
     LOGIN_MESSAGE_NOT_LOGGED_OUT_ALT,
     LOGIN_MESSAGE_BEING_UPDATED,
     LOGIN_MESSAGE_RELOAD_PAGE,
-    LOGIN_MESSAGE_HARDCORE
+    LOGIN_MESSAGE_HARDCORE,
+    LOGIN_MESSAGE_MEMBERS_AREA
   ];
 
   LOGIN_DIALOG_OK = 'Ok';
@@ -271,6 +273,7 @@ function TRSLogin.ClickWorld(World: Int32): Boolean;
 var
   B: TBox;
 begin
+  writeln(toStr(world));
   Result := OCR.LocateText(Self.Bounds, ToString(World), RS_FONT_BOLD_12, TOCRColorFilter.Create([$000000]), B) = 1;
 
   if Result then
@@ -301,7 +304,7 @@ WriteLn Login.IsOpen();
 *)
 function TRSLogin.IsOpen(): Boolean;
 begin
-  Result := Self.FindText('Click to switch');
+  Result := Self.FindText('World');
 end;
 
 (*
@@ -318,7 +321,7 @@ WriteLn Login.IsWorldSwitcherOpen();
 *)
 function TRSLogin.IsWorldSwitcherOpen(): Boolean;
 begin
-  Result := Self.FindText('Cancel');
+  Result := Self.FindText('Confirm');
 end;
 
 (*
@@ -336,7 +339,7 @@ if not Login.IsWorldSwitcherOpen() then
 *)
 function TRSLogin.OpenWorldSwitcher(): Boolean;
 begin
-  Result := ClickText('Click to switch') and WaitUntil(Self.IsWorldSwitcherOpen(), 500, 5000);
+  Result := ClickText('World') and WaitUntil(Self.IsWorldSwitcherOpen(), 500, 5000);
 end;
 
 (*
@@ -354,7 +357,7 @@ if Login.IsWorldSwitcherOpen() then
 *)
 function TRSLogin.CloseWorldSwitcher(): Boolean;
 begin
-  Result := Self.IsOpen() or (Self.ClickText('Cancel') and WaitUntil(Self.IsOpen(), 100, 1000));
+  Result := Self.IsOpen() or (Self.ClickText('Confirm') and WaitUntil(Self.IsOpen(), 100, 5000));
 end;
 
 (*
@@ -373,9 +376,12 @@ function TRSLogin.GetCurrentWorld(): Int32;
 var
   B: TBox;
 begin
-  if Self.CloseWorldSwitcher() and Self.FindText('Click to switch', B) then
+  if Self.CloseWorldSwitcher() and Self.FindText('World', B) then
   begin
-    B.Y1 -= 25;
+    B.x1 -= 25;
+    B.y1 -= 10;
+    b.X2 += 50;
+    b.y2 += 10;
 
     Result := OCR.RecognizeNumber(B, TOCRColorFilter.Create([$FFFFFF]), RS_FONT_BOLD_12);
   end;
@@ -402,7 +408,7 @@ begin
 
   if Self.OpenWorldSwitcher() then
   begin
-    for i := 1 to 9 do // Nine pages of worlds
+    for i := 1 to 8 do // eight pages of worlds. compact has 3, but setting does not save so
     begin
       if Self.ClickWorld(World) then
       begin
@@ -550,7 +556,8 @@ begin
     LOGIN_MESSAGE_BEING_UPDATED,
     LOGIN_MESSAGE_RELOAD_PAGE,
     LOGIN_MESSAGE_UPDATED,
-    LOGIN_MESSAGE_HARDCORE:
+    LOGIN_MESSAGE_HARDCORE,
+    LOGIN_MESSAGE_MEMBERS_AREA:
       Result := False;
 
     // Retry
