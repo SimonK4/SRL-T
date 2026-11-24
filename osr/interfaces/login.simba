@@ -273,7 +273,6 @@ function TRSLogin.ClickWorld(World: Int32): Boolean;
 var
   B: TBox;
 begin
-  writeln(toStr(world));
   Result := OCR.LocateText(Self.Bounds, ToString(World), RS_FONT_BOLD_12, TOCRColorFilter.Create([$000000]), B) = 1;
 
   if Result then
